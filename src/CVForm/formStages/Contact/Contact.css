@@ -1,0 +1,12 @@
+.contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto) 1fr;
+    height: 380px;
+    gap: 20px;
+}
+
+.email,
+.website {
+    grid-column: 1 / 3;
+}
