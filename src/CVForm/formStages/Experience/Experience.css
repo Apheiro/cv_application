@@ -1,0 +1,103 @@
+:root {
+    --swiper-theme-color: #cecac0;
+}
+
+.experiences {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+.swiperExperiences {
+    /* background-color: rgba(0, 153, 255, 0.205); */
+    grid-column: 1/4;
+    width: 100%;
+}
+
+.swiper-slideExperiences {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+    /* background-color: rgb(255, 9, 9); */
+}
+
+.chargeExperience {
+    grid-column: 1/2;
+}
+
+.additions {
+    height: 140px;
+    grid-column: 1/3;
+}
+
+.swiper-pagination {
+    z-index: 1 !important;
+}
+
+.prevBtnExperience {
+    color: #cecac0;
+    background: #1c1c1c;
+    width: 100px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    grid-column: 1/2;
+}
+
+.deleteExperienceBtn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1c1c1c;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.deleteExperienceBtn svg {
+    color: #cecac0;
+    width: 20px;
+    height: 30px;
+    border: none;
+}
+
+.nextBtnExperience {
+    color: #cecac0;
+    background: #1c1c1c;
+    width: 100px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.nextDelNewBtns {
+    grid-column: 3/4;
+    display: flex;
+    gap: 20px;
+    justify-self: end;
+}
+
+.formTitleStageExperience {
+    grid-column: 2 / 3;
+    font-size: 16px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.pagination {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.disable {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: unset;
+}
