@@ -1,0 +1,21 @@
+.basicInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto) 1fr;
+    height: 380px;
+    gap: 20px;
+}
+
+.profile,
+.charge {
+    grid-column: 1 / 3;
+}
+
+.inputContainer textarea {
+    resize: none;
+    background: #1c1c1c;
+    height: 150px;
+    border: none;
+    color: #cecac0;
+    padding: 10px;
+}
