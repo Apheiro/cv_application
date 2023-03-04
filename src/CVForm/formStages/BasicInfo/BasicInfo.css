@@ -13,7 +13,7 @@
 
 .inputContainer textarea {
     resize: none;
-    background: #1c1c1c;
+    background: var(--secundary-color);
     height: 150px;
     border: none;
     color: #cecac0;

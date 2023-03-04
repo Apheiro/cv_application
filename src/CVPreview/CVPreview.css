@@ -1,18 +1,21 @@
 .paperPreviewContainer {
     background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 700px;
     width: 100%;
 }
 
 .paperPreview {
-    /* width: 700px; */
-    /* aspect-ratio: 1/1.414; */
     display: grid;
-    grid-template-columns: 1fr 0.4fr;
+    grid-template-columns: 450px 180px;
     grid-template-rows: 140px 200px 269.89px 269.89px;
     font-size: 13px;
     margin: 25px;
     gap: 20px;
+    position: absolute;
 }
 
 .titleOfPaper {

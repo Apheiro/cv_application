@@ -1,8 +1,14 @@
 .CVFormSection {
-    color: #cecac0;
+    color: var(--color);
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.githubBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .CVFormGrid {
@@ -10,24 +16,25 @@
     max-width: 550px;
     max-height: 500px;
     grid-template-columns: 1fr repeat(4, 55px);
-    grid-template-rows: 55px 1fr;
+    grid-template-rows: 55px 1fr 1fr;
     gap: 20px;
 }
 
 .titleForm {
-    background: #232323;
+    background: var(--main-color);
     border: none;
     font-size: 20px;
     justify-content: center;
     align-items: center;
     font-weight: 800;
     display: flex;
+    padding-inline: 10px;
 }
 
 .btnOptions {
-    background: #232323;
+    background: var(--main-color);
     border: none;
-    color: #cecac0;
+    color: var(--color);
     cursor: pointer;
 }
 
@@ -37,8 +44,8 @@
 }
 
 .prevNextBtn {
-    color: #cecac0;
-    background: #232323;
+    color: var(--color);
+    background: var(--main-color);
     width: 55px;
     height: 55px;
     padding: 15px;
@@ -52,12 +59,12 @@
 }
 
 .prevNextBtn svg polyline {
-    stroke: #cecac0;
+    stroke: var(--color);
     stroke-width: 3px;
 }
 
 .CVForm {
-    background: #232323;
+    background: var(--main-color);
     min-width: 0px;
     grid-column: 1 / 6;
 }
@@ -70,10 +77,10 @@
 }
 
 .inputContainer input {
-    background: #1c1c1c;
+    background: var(--secundary-color);
     height: 40px;
     border: none;
-    color: #cecac0;
+    color: var(--color);
     padding-inline: 10px;
 }
 
@@ -100,12 +107,85 @@
     grid-column: 1 / 6;
     height: 9px;
     width: 100%;
-    background: #232323;
+    background: var(--main-color);
     overflow: hidden;
 }
 
 .progressBarFill {
     transition: width ease-in-out 0.2s;
     height: 100%;
-    background: #cecac0;
+    background: var(--color);
+}
+
+@media (max-width:1370px) {
+    .CVFormSection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .prevNextBtnContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width:1000px) {
+    .CVFormSection {
+        gap: 120px;
+        min-width: 450px;
+    }
+
+    .CVFormGrid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 55px 55px repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .titleForm {
+        background: var(--main-color);
+        grid-row: 1/2;
+        grid-column: 1/5;
+    }
+
+    .CVForm {
+        background: var(--main-color);
+        min-width: 0px;
+        grid-row: 3/4;
+        grid-column: 1 / 5;
+    }
+
+    .progressBar {
+        grid-column: 1 / 5;
+        grid-row: 4/5;
+        height: 9px;
+        width: 100%;
+        background: var(--main-color);
+        overflow: hidden;
+    }
+
+    .githubBtn {
+        grid-row: 2/3;
+    }
+
+    .darkModeBtn {
+        grid-row: 2/3;
+    }
+
+    .onlyPreviewBtn {
+        grid-row: 2/3;
+    }
+
+    .previewBtn {
+        grid-row: 2/3;
+    }
+}
+
+@media (max-width:450px) {
+    .CVFormSection {
+        transform: scale(0.8);
+    }
 }

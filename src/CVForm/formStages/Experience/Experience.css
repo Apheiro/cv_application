@@ -1,7 +1,3 @@
-:root {
-    --swiper-theme-color: #cecac0;
-}
-
 .experiences {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -10,7 +6,6 @@
 }
 
 .swiperExperiences {
-    /* background-color: rgba(0, 153, 255, 0.205); */
     grid-column: 1/4;
     width: 100%;
 }
@@ -20,7 +15,6 @@
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(3, auto);
     gap: 20px;
-    /* background-color: rgb(255, 9, 9); */
 }
 
 .chargeExperience {
@@ -37,8 +31,8 @@
 }
 
 .prevBtnExperience {
-    color: #cecac0;
-    background: #1c1c1c;
+    color: var(--color);
+    background: var(--secundary-color);
     width: 100px;
     height: 40px;
     border: none;
@@ -51,22 +45,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1c1c1c;
+    background: var(--secundary-color);
     width: 40px;
     height: 40px;
     border: none;
 }
 
 .deleteExperienceBtn svg {
-    color: #cecac0;
+    color: var(--color);
     width: 20px;
     height: 30px;
     border: none;
 }
 
 .nextBtnExperience {
-    color: #cecac0;
-    background: #1c1c1c;
+    color: var(--color);
+    background: var(--secundary-color);
     width: 100px;
     height: 40px;
     border: none;

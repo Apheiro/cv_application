@@ -1,3 +1,21 @@
+:root {
+    --background-color: #111111;
+    --swiper-theme-color: #cecac0;
+    --color: #cecac0;
+    --background-scrollbar-track: #cecac017;
+    --main-color: #232323;
+    --secundary-color: #1c1c1c;
+}
+
+.dayTheme {
+    --background-color: #c7c7c7;
+    --swiper-theme-color: #4a4a4a;
+    --color: #4a4a4a;
+    --background-scrollbar-track: #cecac017;
+    --main-color: #f4f4f4;
+    --secundary-color: #e2e2e2;
+}
+
 * {
     font-family: Arial, Helvetica, sans-serif, Inter;
     box-sizing: border-box;
@@ -12,8 +30,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #111111;
-    /* background: #6d6d6d; */
+    background: var(--background-color);
 }
 
 .disable {
@@ -27,6 +44,7 @@ body {
     width: 100vw;
     justify-content: space-evenly;
     gap: 20px;
+    padding: 20px;
 }
 
 .showOnlyPreview {
@@ -37,31 +55,38 @@ body {
 
 .goBackOnlyPreviewBtn {
     border: none;
-    background: #232323;
+    background: var(--main-color);
     width: 40px;
     height: 40px;
     cursor: pointer;
 }
 
 .goBackOnlyPreviewBtn svg {
-    color: #cecac0;
+    color: var(--color);
     width: 20px;
     height: 20px;
 }
 
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #cecac017;
+    background: var(--color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cecac0;
+    background: var(--background-scrollbar-track);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #787670;
+    background: var(--background-scrollbar-track);
+}
+
+@media (max-width:450px) {
+    .cvApplicationContainer {
+        padding: 0px;
+    }
 }
