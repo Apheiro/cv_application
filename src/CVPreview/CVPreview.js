@@ -1,6 +1,5 @@
 import React from 'react'
 import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail, HiOutlineLink } from "react-icons/hi";
-import { Textfit } from 'react-textfit';
 import './CVPreview.css'
 
 class CVPreview extends React.Component {
@@ -11,6 +10,7 @@ class CVPreview extends React.Component {
         this.observer = null;
         this.state = {
             height: 989.8,
+            scale: 1
         }
     }
 
@@ -28,11 +28,13 @@ class CVPreview extends React.Component {
     handleResize(entries) {
         // console.log(entries)
         const { width, height } = entries[0].contentRect;
-        console.log(`Width: ${width}, Height: ${height}`);
         const aspectRatioHeight = width * 1.414
-
+        const scale = width * 1 / 700
+        // console.log(`Width: ${width}, Height: ${height}`);
+        // console.log(`scale(${this.state.scale})`)
         this.setState({
-            height: aspectRatioHeight
+            height: aspectRatioHeight,
+            scale
         })
     }
 
@@ -41,8 +43,8 @@ class CVPreview extends React.Component {
     render() {
         const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills } = this.props
         return (
-            <section className='paperPreviewContainer' ref={this.containerRef} style={{ maxHeight: `${this.state.height}px` }}>
-                <div className='paperPreview'>
+            <section className='paperPreviewContainer' ref={this.containerRef} style={{ minHeight: `${this.state.height}px` }}>
+                <div className='paperPreview' style={{ transform: `scale(${this.state.scale})` }}>
                     <div className='titleOfPaper'>
                         <h1 className='aspirantNamePaper'>{firstName} {lastName}</h1>
                         <h2 className='chargeNamePaper'>{charge}</h2>

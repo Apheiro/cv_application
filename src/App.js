@@ -9,8 +9,12 @@ class App extends React.Component {
     super(props)
     this.getData = this.getData.bind(this)
     this.showPreview = this.showPreview.bind(this)
+    this.dayThemeOn = this.dayThemeOn.bind(this)
     this.showOnlyPreview = this.showOnlyPreview.bind(this)
+    this.handleResize = this.handleResize.bind(this);
     this.state = {
+      dayTheme: false,
+      width: window.innerWidth,
       showPreview: true,
       showOnlyPreview: false,
       firstName: 'CHRISTINE',
@@ -118,6 +122,37 @@ class App extends React.Component {
     }
   }
 
+  dayThemeOn() {
+    if (this.state.dayTheme === false) {
+      this.setState({
+        dayTheme: true
+      }, () => {
+        document.body.classList.add('dayTheme');
+      })
+
+    } else {
+      this.setState({
+        dayTheme: false
+      }, () => {
+        document.body.classList.remove('dayTheme');
+      })
+    }
+
+  }
+
+  handleResize() {
+    this.setState({ width: window.innerWidth });
+    console.log(this.state.width)
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   showOnlyPreview() {
     if (this.state.showOnlyPreview === true) {
       this.setState({
@@ -163,10 +198,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={`cvApplicationContainer ${this.state.showOnlyPreview ? 'showOnlyPreview' : ''}`}>
+      <div className={`cvApplicationContainer ${this.state.showOnlyPreview ? 'showOnlyPreview' : ''}`} ref={this.cvApplicationRef}>
         {
           this.state.showOnlyPreview ? null :
             <CVForm
+              dayTheme={this.state.dayTheme}
+              dayThemeFn={this.dayThemeOn}
+              width={this.state.width}
               getData={this.getData}
               showPreviewFn={this.showPreview}
               showPreview={this.state.showPreview}
@@ -177,20 +215,21 @@ class App extends React.Component {
 
 
         {
-          this.state.showPreview ?
-            <CVPreview
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              charge={this.state.charge}
-              profile={this.state.profile}
-              email={this.state.email}
-              website={this.state.website}
-              location={this.state.location}
-              phoneNumber={this.state.phoneNumber}
-              education={this.state.education}
-              experience={this.state.experience}
-              skills={this.state.skills}
-            /> : null
+          this.state.width < 1000 && this.state.showOnlyPreview === false ? null :
+            this.state.showPreview ?
+              <CVPreview
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                charge={this.state.charge}
+                profile={this.state.profile}
+                email={this.state.email}
+                website={this.state.website}
+                location={this.state.location}
+                phoneNumber={this.state.phoneNumber}
+                education={this.state.education}
+                experience={this.state.experience}
+                skills={this.state.skills}
+              /> : null
 
         }
 

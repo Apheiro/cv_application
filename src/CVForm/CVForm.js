@@ -29,21 +29,19 @@ class CVForm extends React.Component {
     }
 
     render() {
-        const { getData, showPreviewFn, showPreview, showOnlyPreviewFn } = this.props;
+        const { getData, showPreviewFn, showPreview, showOnlyPreviewFn, width, dayTheme, dayThemeFn } = this.props;
 
         return (
             <section className='CVFormSection'>
 
-                <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button>
+                {width > 1370 ? <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button> : null}
 
                 <div className='CVFormGrid'>
                     <h1 className='titleForm'>CV APPLICATION</h1>
-                    <button className='githubBtn btnOptions'><FaGithubSquare /></button>
-                    <button className='darkModeBtn btnOptions'><FaSun /></button>
+                    <a className='githubBtn btnOptions' href="https://github.com/Apheiro"><FaGithubSquare /></a>
+                    <button className='darkModeBtn btnOptions' onClick={dayThemeFn}>{dayTheme ? <FaMoon /> : <FaSun />}</button>
                     <button className='onlyPreviewBtn btnOptions' onClick={showOnlyPreviewFn}><IoNewspaper /></button>
-                    <button className='previewBtn btnOptions' onClick={showPreviewFn}>
-                        {showPreview ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+                    <button className={`previewBtn btnOptions ${width < 1000 ? 'disable' : ''}`} onClick={showPreviewFn}>{showPreview ? <FaEyeSlash /> : <FaEye />}</button>
                     <form className='CVForm'>
                         <Swiper
                             className='swiperPrincipal'
@@ -64,8 +62,15 @@ class CVForm extends React.Component {
                         <div className='progressBarFill' style={{ width: `${this.state.progress}%` }}></div>
                     </div>
                 </div>
-                <button className='prevNextBtn' id='nextFormBtn' onClick={this.swipeToNextPrev}><GrFormNext /></button>
-            </section>
+                {
+                    width > 1370 ? <button className='prevNextBtn' id='nextFormBtn' onClick={this.swipeToNextPrev}><GrFormNext /></button> :
+                        <div className='prevNextBtnContainer'>
+                            <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button>
+                            <button className='prevNextBtn' id='nextFormBtn' onClick={this.swipeToNextPrev}><GrFormNext /></button>
+                        </div>
+                }
+
+            </section >
         )
     }
 }
