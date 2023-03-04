@@ -1,6 +1,5 @@
 import React from 'react'
 import uniqid from 'uniqid'
-// import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { BsFillTrashFill } from "react-icons/bs";
 
@@ -149,7 +148,6 @@ class Experience extends React.Component {
                                         Additions
                                         <textarea type="text" ref={this.AdditionsInput} name="" id="additions" onChange={this.handleInput} />
                                     </label>
-
                                 </SwiperSlide>
                             )
                         })

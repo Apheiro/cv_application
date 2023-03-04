@@ -16,6 +16,13 @@ body {
     /* background: #6d6d6d; */
 }
 
+#root {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

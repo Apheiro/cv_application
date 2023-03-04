@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <>
         <CVForm />
-        {/* <CVPreview /> */}
+        <CVPreview />
       </>
 
     )
