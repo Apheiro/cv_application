@@ -21,18 +21,6 @@ class Skills extends React.Component {
         };
     }
 
-    deleteSkill(e) {
-        const id = e.currentTarget.parentNode.id
-        const skills = [...this.state.skills]
-        const index = skills.findIndex((skill) => skill.id === id)
-
-        skills.splice(index, 1)
-        this.setState({
-            skills: skills
-        })
-        e.preventDefault()
-    }
-
     resetValues() {
         this.skillInput.current.value = ''
         this.skill = {
@@ -46,6 +34,19 @@ class Skills extends React.Component {
         this.skill.skillDescription = value
     }
 
+    deleteSkill(e) {
+        const id = e.currentTarget.parentNode.id
+        const skills = [...this.state.skills]
+        const index = skills.findIndex((skill) => skill.id === id)
+        skills.splice(index, 1)
+        this.setState({
+            skills: skills
+        }, () => {
+            this.props.getData(this.state.skills, 'skills')
+        })
+        e.preventDefault()
+    }
+
     addSkill(e) {
         if (this.skillInput.current.value === '') {
             alert('field the camp');
@@ -53,9 +54,14 @@ class Skills extends React.Component {
             this.skill.id = uniqid();
             const skill = { ...this.skill };
             const skills = [...this.state.skills];
-            skills.length < 10 ? skills.push(skill) : alert('no more than 4');
-            this.setState({ skills: skills });
-            this.resetValues();
+
+            if (skills.length < 9) {
+                skills.push(skill)
+                this.setState({
+                    skills: skills,
+                }, () => { this.props.getData(this.state.skills, 'skills') });
+                this.resetValues();
+            }
         }
         e.preventDefault()
     }
@@ -67,18 +73,19 @@ class Skills extends React.Component {
                     Skill
                     <input type="text" ref={this.skillInput} name="" id="skill" onChange={this.handleInput} />
                 </label>
-                <div className='listOfSkills'>{
-                    this.state.skills.map((skill) => {
-                        return (
-                            <div key={skill.id} id={skill.id} className='skillLabel'>
-                                <h3>{skill.skillDescription}</h3>
-                                <button className='deleteSkillBtn' onClick={this.deleteSkill}><BsFillTrashFill /></button>
-                            </div>
-                        )
-                    })
-                }</div>
-                <button className='addSkillBtn' onClick={this.addSkill}>+</button>
-
+                <div className='listOfSkills'>
+                    {
+                        this.state.skills.map((skill) => {
+                            return (
+                                <div key={skill.id} id={skill.id} className='skillLabel'>
+                                    <h3>{skill.skillDescription}</h3>
+                                    <button className='deleteSkillBtn' onClick={this.deleteSkill}><BsFillTrashFill /></button>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <button className={`addSkillBtn ${this.state.skills.length < 9 ? '' : 'disable'}`} onClick={this.addSkill}>+</button>
                 <button className='saveBtn' onClick={this.addSkill}>Save CV</button>
                 <h2 className='formTitleStage'>Skills</h2>
             </div>

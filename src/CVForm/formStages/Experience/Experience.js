@@ -55,7 +55,7 @@ class Experience extends React.Component {
         if (input === 'location') { experiences[index].location = value }
         if (input === 'years') { experiences[index].years = value }
         if (input === 'additions') { experiences[index].additions = value }
-        this.setState({ experiences })
+        this.setState({ experiences }, () => this.props.getData(this.state.experiences, 'experience'))
     }
 
     deleteExperience(e) {
@@ -66,11 +66,14 @@ class Experience extends React.Component {
             experiences.splice(index, 1)
             this.setState({
                 experiences: experiences
-            }, () => this.setState({
-                swiperEnd: this.swiperRef.current.swiper.isEnd,
-                actualSlideId: swiper.slides[swiper.activeIndex].getAttribute('id'),
-                activeIndexSlide: swiper.activeIndex
-            }))
+            }, () => {
+                this.setState({
+                    swiperEnd: this.swiperRef.current.swiper.isEnd,
+                    actualSlideId: swiper.slides[swiper.activeIndex].getAttribute('id'),
+                    activeIndexSlide: swiper.activeIndex
+                })
+                this.props.getData(this.state.experiences, 'experience')
+            })
         }
         e.preventDefault()
     }
@@ -88,7 +91,8 @@ class Experience extends React.Component {
                 id: uniqid()
             })
             this.setState({
-                experiences: experiences
+                experiences,
+                btnEnabled: true
             }, () => {
                 swiper.slideNext()
                 this.setState({
@@ -98,7 +102,7 @@ class Experience extends React.Component {
                 })
             })
         } else {
-            alert('no more than 4')
+            alert('no')
         }
         e.preventDefault()
     }
@@ -120,7 +124,7 @@ class Experience extends React.Component {
                 <Swiper
                     className='swiperExperiences'
                     ref={this.swiperRef}
-                    allowTouchMove={true}
+                    allowTouchMove={false}
                     spaceBetween={50}
                     slidesPerView={1}
                 >

@@ -3,20 +3,23 @@ import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail, HiOutlineLink }
 import './CVPreview.css'
 
 class CVPreview extends React.Component {
-
+    constructor(props) {
+        super(props)
+    }
 
     render() {
+        const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills } = this.props
         return (
             <section className='paperPreview'>
                 <div className='titleOfPaper'>
-                    <h1 className='aspirantNamePaper'>CHRISTINE CROWDER</h1>
-                    <h2 className='chargeNamePaper'>JUNIOR DEVELOPER</h2>
+                    <h1 className='aspirantNamePaper'>{firstName} {lastName}</h1>
+                    <h2 className='chargeNamePaper'>{charge}</h2>
                 </div>
 
                 <div className='profilePaper seccionInfo'>
                     <h3 className='seccionTitle'>PROFILE</h3>
                     <div className='seccionContainer'>
-                        <p className='profileDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p className='profileDescription'>{profile}</p>
                     </div>
 
                 </div>
@@ -26,94 +29,77 @@ class CVPreview extends React.Component {
                     <div className='seccionContainer'>
                         <div className='contactElement'>
                             <HiOutlineLocationMarker />
-                            <p>Street Name City, Zip</p>
+                            <p>{location}</p>
                         </div>
                         <div className='contactElement'>
                             <HiOutlinePhone />
-                            <p>+54 387 6384609</p>
+                            <p>{phoneNumber}</p>
                         </div>
                         <div className='contactElement'>
                             <HiOutlineMail />
-                            <p>emailAdress@mail.com</p>
+                            <p>{email}</p>
                         </div>
                         <div className='contactElement'>
                             <HiOutlineLink />
-                            <p>pepitoloco.com</p>
+                            <p>{website}</p>
                         </div>
-
                     </div>
-
                 </div>
 
                 <div className='experiencesPaper seccionInfo'>
                     <h3 className='seccionTitle'>WORK EXPERIENCE</h3>
                     <div className='seccionContainer'>
-                        <div className='workExperience'>
-                            <div className='jobInfoTitleExperience'>
-                                <h4>Normal Job Title</h4>
-                                <h5>Company / Location / 2 years</h5>
-                            </div>
-                            <p className='jobDescriptionExperience'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>
-                        </div>
-                        <div className='workExperience'>
-                            <div className='jobInfoTitleExperience'>
-                                <h4>Normal Job Title</h4>
-                                <h5>Company / Location / 2 years</h5>
-                            </div>
-                            <p className='jobDescriptionExperience'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>
-                        </div>
-                        <div className='workExperience'>
-                            <div className='jobInfoTitleExperience'>
-                                <h4>Normal Job Title</h4>
-                                <h5>Company / Location / 2 years</h5>
-                            </div>
-                            <p className='jobDescriptionExperience'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>
-                        </div>
-                        <div className='workExperience'>
-                            <div className='jobInfoTitleExperience'>
-                                <h4>Normal Job Title</h4>
-                                <h5>Company / Location / 2 years</h5>
-                            </div>
-                            <p className='jobDescriptionExperience'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.</p>
-                        </div>
+                        {
+                            experience.map((exp) => {
+                                return (
+                                    <div key={`${exp.id}-paper`} className='workExperience'>
+                                        <div className='jobInfoTitleExperience'>
+                                            <h4>{exp.charge}</h4>
+                                            <h5>{exp.company} / {exp.location} / {exp.years} years</h5>
+                                        </div>
+                                        <p className='jobDescriptionExperience'>{exp.additions}</p>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 
                 <div className='educationPaper seccionInfo'>
                     <h3 className='seccionTitle'>EDUCATION</h3>
                     <div className='seccionContainer'>
-                        <div className=''>
-                            <h4>Software Enginner</h4>
-                            <p>University of Brighton/London</p>
-                        </div>
-                        <div>
-                            <h4>Software Enginner</h4>
-                            <p>University of Brighton/London</p>
-                        </div>
-                        <div>
-                            <h4>Software Enginner</h4>
-                            <p>University of Brighton/London</p>
-                        </div>
-                        <div>
-                            <h4>Software Enginner</h4>
-                            <p>University of Brighton/London</p>
-                        </div>
+                        {
+                            education.map((education) => {
+                                return (
+                                    <div key={`${education.id}-paper`}>
+                                        <h4>{education.degree}</h4>
+                                        <p>{education.university}</p>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
 
                 </div>
-
                 <div className='skillsPaper seccionInfo'>
                     <h3 className='seccionTitle'>SKILLS</h3>
                     <ul className='seccionContainer'>
+                        {
+                            skills.map((skills) => {
+                                return (
+                                    <li key={`${skills.id}-paper`}>{skills.skillDescription}</li>
+                                )
+                            })
+                        }
+                        {/* <li>Pro player of valorant.</li>
+                        <li>Personal and social Skills.</li>
                         <li>Pro player of valorant.</li>
                         <li>Pro player of valorant.</li>
                         <li>Pro player of valorant.</li>
                         <li>Pro player of valorant.</li>
                         <li>Pro player of valorant.</li>
                         <li>Pro player of valorant.</li>
-                        <li>Pro player of valorant.</li>
-                        <li>Pro player of valorant.</li>
-                        <li>Pro player of valorant.</li>
+                        <li>Pro player of valorant.</li> */}
                     </ul>
 
                 </div>

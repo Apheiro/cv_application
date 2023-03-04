@@ -30,6 +30,7 @@ class CVForm extends React.Component {
     }
 
     render() {
+        const { getData } = this.props;
 
         return (
             <section className='CVFormSection'>
@@ -37,7 +38,6 @@ class CVForm extends React.Component {
                 <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button>
 
                 <div className='CVFormGrid'>
-
                     <h1 className='titleForm'>CV APPLICATION</h1>
                     <button className='githubBtn btnOptions'><FaGithubSquare /></button>
                     <button className='darkModeBtn btnOptions'><FaSun /></button>
@@ -51,11 +51,11 @@ class CVForm extends React.Component {
                             spaceBetween={50}
                             slidesPerView={1}
                         >
-                            <SwiperSlide className='swiper-slidePrincipal'> <BasicInfo /> </SwiperSlide>
-                            <SwiperSlide className='swiper-slidePrincipal'> <Contact /> </SwiperSlide>
-                            <SwiperSlide className='swiper-slidePrincipal'> <Education /> </SwiperSlide>
-                            <SwiperSlide className='swiper-slidePrincipal'> <Experience /> </SwiperSlide>
-                            <SwiperSlide className='swiper-slidePrincipal'> <Skills /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <BasicInfo getData={getData} /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <Contact getData={getData} /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <Education getData={getData} /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <Experience getData={getData} /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <Skills getData={getData} /> </SwiperSlide>
                         </Swiper>
 
                     </form>
