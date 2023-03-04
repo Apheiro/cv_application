@@ -31,19 +31,19 @@ class Contact extends React.Component {
             <div className='contact'>
                 <label className='email inputContainer'>
                     Email
-                    <input onChange={this.handlingInput} type="email" name="" id="email" />
+                    <input onChange={this.handlingInput} maxLength='50' type="email" name="" id="email" />
                 </label>
                 <label className='website inputContainer'>
                     Website
-                    <input onChange={this.handlingInput} type="url" name="" id="website" />
+                    <input onChange={this.handlingInput} maxLength='50' type="url" name="" id="website" />
                 </label >
                 <label className='location inputContainer'>
                     Location
-                    <input onChange={this.handlingInput} type="text" name="" id="location" />
+                    <input onChange={this.handlingInput} maxLength='50' type="text" name="" id="location" />
                 </label>
                 <label className='phoneNumber inputContainer'>
                     Phone number
-                    <input onChange={this.handlingInput} type="number" name="" id="phoneNumber" />
+                    <input onChange={this.handlingInput} maxLength='50' type="text" name="" id="phoneNumber" />
                 </label>
                 <h2 className='formTitleStage'>Contact</h2>
             </div>

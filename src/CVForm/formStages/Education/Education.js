@@ -77,11 +77,11 @@ class Education extends React.Component {
             <div className='education'>
                 <label className='degree inputContainer'>
                     degree
-                    <input type="text" ref={this.degreeInput} name="" id="degree" onChange={this.handleInput} />
+                    <input type="text" ref={this.degreeInput} maxLength='17' name="" id="degree" onChange={this.handleInput} />
                 </label>
                 <label className='university inputContainer'>
                     university
-                    <input type="text" ref={this.universityInput} name="" id="university" onChange={this.handleInput} />
+                    <input type="text" ref={this.universityInput} maxLength='17' name="" id="university" onChange={this.handleInput} />
                 </label >
                 <div className='listOfEducation'>
                     {

@@ -31,19 +31,19 @@ class BasicInfo extends React.Component {
             <div className='basicInfo'>
                 <label className='firstName inputContainer'>
                     First Name
-                    <input onChange={this.handlingInput} type="text" name="" id="firstName" />
+                    <input onChange={this.handlingInput} maxLength='9' type="text" name="" id="firstName" />
                 </label>
                 <label className='lastName inputContainer'>
                     Last Name
-                    <input onChange={this.handlingInput} type="text" name="" id="lastName" />
+                    <input onChange={this.handlingInput} maxLength='9' type="text" name="" id="lastName" />
                 </label >
                 <label className='charge inputContainer'>
                     Charge
-                    <input onChange={this.handlingInput} type="text" name="" id="charge" />
+                    <input onChange={this.handlingInput} maxLength='40' type="text" name="" id="charge" />
                 </label>
                 <label className='profile inputContainer'>
                     Profile
-                    <textarea onChange={this.handlingInput} type="text" name="" id="profile" />
+                    <textarea onChange={this.handlingInput} maxLength='440' type="text" name="" id="profile" />
                 </label>
                 <h2 className='formTitleStage'>Basic info</h2>
             </div>

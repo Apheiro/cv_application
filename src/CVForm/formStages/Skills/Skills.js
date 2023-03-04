@@ -71,7 +71,7 @@ class Skills extends React.Component {
             <div className='skills'>
                 <label className='skill inputContainer'>
                     Skill
-                    <input type="text" ref={this.skillInput} name="" id="skill" onChange={this.handleInput} />
+                    <input type="text" ref={this.skillInput} maxLength='24' name="" id="skill" onChange={this.handleInput} />
                 </label>
                 <div className='listOfSkills'>
                     {

@@ -134,23 +134,23 @@ class Experience extends React.Component {
                                 <SwiperSlide key={experience.id} id={experience.id} className='swiper-slideExperiences'>
                                     <label className='chargeExperience inputContainer'>
                                         Charge
-                                        <input type="text" ref={this.chargeInput} name="" id="chargeExperience" onChange={this.handleInput} />
+                                        <input type="text" ref={this.chargeInput} maxLength='40' name="" id="chargeExperience" onChange={this.handleInput} />
                                     </label>
                                     <label className='company inputContainer'>
                                         Company
-                                        <input type="text" ref={this.companyInput} name="" id="company" onChange={this.handleInput} />
+                                        <input type="text" ref={this.companyInput} maxLength='20' name="" id="company" onChange={this.handleInput} />
                                     </label >
                                     <label className='location inputContainer'>
                                         Location
-                                        <input type="text" ref={this.LocationInput} name="" id="location" onChange={this.handleInput} />
+                                        <input type="text" ref={this.LocationInput} maxLength='45' name="" id="location" onChange={this.handleInput} />
                                     </label>
                                     <label className='years inputContainer'>
                                         Years in the charge
-                                        <input type="number" ref={this.yearsInput} name="" id="years" onChange={this.handleInput} />
+                                        <input type="number" ref={this.yearsInput} max='99' name="" id="years" onChange={this.handleInput} />
                                     </label >
                                     <label className='additions inputContainer'>
                                         Additions
-                                        <textarea type="text" ref={this.AdditionsInput} name="" id="additions" onChange={this.handleInput} />
+                                        <textarea type="text" ref={this.AdditionsInput} maxLength='275' name="" id="additions" onChange={this.handleInput} />
                                     </label>
                                 </SwiperSlide>
                             )
