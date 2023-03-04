@@ -22,11 +22,31 @@ body {
     cursor: unset;
 }
 
-#root {
+.cvApplicationContainer {
     display: flex;
     width: 100vw;
     justify-content: space-evenly;
     gap: 20px;
+}
+
+.showOnlyPreview {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: center;
+}
+
+.goBackOnlyPreviewBtn {
+    border: none;
+    background: #232323;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.goBackOnlyPreviewBtn svg {
+    color: #cecac0;
+    width: 20px;
+    height: 20px;
 }
 
 ::-webkit-scrollbar {

@@ -22,7 +22,6 @@ class CVForm extends React.Component {
         }
     }
 
-
     swipeToNextPrev(e) {
         const swiper = this.swiperRef.current.swiper;
         e.currentTarget.id === 'prevFormBtn' ? swiper.slidePrev() : swiper.slideNext()
@@ -30,7 +29,7 @@ class CVForm extends React.Component {
     }
 
     render() {
-        const { getData } = this.props;
+        const { getData, showPreviewFn, showPreview, showOnlyPreviewFn } = this.props;
 
         return (
             <section className='CVFormSection'>
@@ -41,8 +40,10 @@ class CVForm extends React.Component {
                     <h1 className='titleForm'>CV APPLICATION</h1>
                     <button className='githubBtn btnOptions'><FaGithubSquare /></button>
                     <button className='darkModeBtn btnOptions'><FaSun /></button>
-                    <button className='onlyPreviewBtn btnOptions'><IoNewspaper /></button>
-                    <button className='previewBtn btnOptions'><FaEye /></button>
+                    <button className='onlyPreviewBtn btnOptions' onClick={showOnlyPreviewFn}><IoNewspaper /></button>
+                    <button className='previewBtn btnOptions' onClick={showPreviewFn}>
+                        {showPreview ? <FaEyeSlash /> : <FaEye />}
+                    </button>
                     <form className='CVForm'>
                         <Swiper
                             className='swiperPrincipal'

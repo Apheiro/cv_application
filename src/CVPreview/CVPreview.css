@@ -1,13 +1,17 @@
-.paperPreview {
+.paperPreviewContainer {
     background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
     max-width: 700px;
     width: 100%;
-    padding: 25px;
-    aspect-ratio: 1/1.414;
+}
+
+.paperPreview {
+    /* width: 700px; */
+    /* aspect-ratio: 1/1.414; */
     display: grid;
     grid-template-columns: 1fr 0.4fr;
     grid-template-rows: 140px 200px 269.89px 269.89px;
     font-size: 13px;
+    margin: 25px;
     gap: 20px;
 }
 
@@ -36,6 +40,7 @@
     border-top: black 1px solid;
     border-radius: 0;
     padding-top: 20px;
+    overflow-wrap: anywhere;
 }
 
 .seccionInfo {
@@ -72,8 +77,8 @@
 }
 
 .contactPaper .seccionContainer svg {
-    width: 18px;
-    height: 20px;
+    min-width: 18px;
+    min-height: 20px;
 }
 
 .experiencesPaper {

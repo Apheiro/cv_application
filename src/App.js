@@ -2,13 +2,17 @@ import React from 'react'
 import './App.css'
 import CVForm from './CVForm/CVForm'
 import CVPreview from './CVPreview/CVPreview'
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-
     this.getData = this.getData.bind(this)
+    this.showPreview = this.showPreview.bind(this)
+    this.showOnlyPreview = this.showOnlyPreview.bind(this)
     this.state = {
+      showPreview: true,
+      showOnlyPreview: false,
       firstName: 'CHRISTINE',
       lastName: 'CROWDER',
       charge: 'JUNIOR DEVELOPER',
@@ -114,6 +118,35 @@ class App extends React.Component {
     }
   }
 
+  showOnlyPreview() {
+    if (this.state.showOnlyPreview === true) {
+      this.setState({
+        showOnlyPreview: false
+      })
+    } else {
+      this.state.showPreview ?
+        this.setState({
+          showOnlyPreview: true
+        }) :
+        this.setState({
+          showPreview: true,
+          showOnlyPreview: true
+        })
+    }
+  }
+
+  showPreview() {
+    if (this.state.showPreview === true) {
+      this.setState({
+        showPreview: false
+      })
+    } else {
+      this.setState({
+        showPreview: true
+      })
+    }
+  }
+
   getData(data, type) {
     if (type === 'firstName') { this.setState({ firstName: data }) }
     if (type === 'lastName') { this.setState({ lastName: data }) }
@@ -130,26 +163,47 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
-        <CVForm getData={this.getData} />
-        <CVPreview
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          charge={this.state.charge}
-          profile={this.state.profile}
-          email={this.state.email}
-          website={this.state.website}
-          location={this.state.location}
-          phoneNumber={this.state.phoneNumber}
-          education={this.state.education}
-          experience={this.state.experience}
-          skills={this.state.skills}
-        />
-        <button onClick={() => console.log(this.state)}>test</button>
-      </>
+      <div className={`cvApplicationContainer ${this.state.showOnlyPreview ? 'showOnlyPreview' : ''}`}>
+        {
+          this.state.showOnlyPreview ? null :
+            <CVForm
+              getData={this.getData}
+              showPreviewFn={this.showPreview}
+              showPreview={this.state.showPreview}
+              showOnlyPreviewFn={this.showOnlyPreview}
+              showOnlyPreview={this.state.showOnlyPreview}
+            />
+        }
 
+
+        {
+          this.state.showPreview ?
+            <CVPreview
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              charge={this.state.charge}
+              profile={this.state.profile}
+              email={this.state.email}
+              website={this.state.website}
+              location={this.state.location}
+              phoneNumber={this.state.phoneNumber}
+              education={this.state.education}
+              experience={this.state.experience}
+              skills={this.state.skills}
+            /> : null
+
+        }
+
+        {
+          this.state.showOnlyPreview ?
+            <button className='goBackOnlyPreviewBtn' onClick={this.showOnlyPreview}>
+              <RiArrowGoBackLine />
+            </button> : null
+        }
+
+        {/* <button onClick={() => console.log(this.state)}>test</button> */}
+      </div>
     )
-
   }
 }
 export default App;
