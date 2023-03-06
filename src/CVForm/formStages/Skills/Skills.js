@@ -18,6 +18,7 @@ class Skills extends React.Component {
         this.resetValues = this.resetValues.bind(this)
         this.saveCV = this.saveCV.bind(this)
         this.skillInput = React.createRef()
+        this.btnRef = React.createRef()
         this.skill = {
             skillDescription: '',
             id: ''
@@ -46,6 +47,7 @@ class Skills extends React.Component {
         // };
         // pdfMake.createPdf(docDefinition).download('Curriculum-Vitae')
 
+
         html2canvas(refCVPreview).then(canvas => {
             const imgData = canvas.toDataURL("image/png");
             const docDefinition = {
@@ -58,7 +60,7 @@ class Skills extends React.Component {
                     }
                 ]
             };
-            pdfMake.createPdf(docDefinition).download();
+            pdfMake.createPdf(docDefinition).download('Curriculum-Vitale');
         });
     }
 
@@ -128,7 +130,7 @@ class Skills extends React.Component {
                     }
                 </div>
                 <button className={`addSkillBtn ${this.state.skills.length < 9 ? '' : 'disable'}`} onClick={this.addSkill}>+</button>
-                <button className='saveBtn' onClick={this.saveCV}>Save CV</button>
+                <button className='saveBtn' onClick={this.saveCV} ref={this.btnRef}>Save CV</button>
                 <h2 className='formTitleStage'>Skills</h2>
             </div>
         )

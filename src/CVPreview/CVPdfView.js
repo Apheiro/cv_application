@@ -15,7 +15,7 @@ class CVPdfView extends React.Component {
     }
 
     render() {
-        const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills, getRefToCvPreview } = this.props
+        const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills } = this.props
         return (
             <section className='paperPreviewContainer CVPdfView' ref={this.screenshotRef}>
                 <div className='paperPreview'>

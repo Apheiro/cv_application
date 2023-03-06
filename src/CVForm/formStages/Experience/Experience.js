@@ -7,7 +7,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import './Experience.css'
-
+import { EffectFade } from 'swiper';
+import 'swiper/css/effect-fade';
 class Experience extends React.Component {
     constructor(props) {
         super(props);
@@ -62,7 +63,7 @@ class Experience extends React.Component {
         const experiences = [...this.state.experiences]
         const swiper = this.swiperRef.current.swiper;
         const index = experiences.findIndex((exp) => exp.id === this.state.actualSlideId)
-        if (experiences.length != 1) {
+        if (experiences.length !== 1) {
             experiences.splice(index, 1)
             this.setState({
                 experiences: experiences
@@ -79,7 +80,7 @@ class Experience extends React.Component {
     }
 
     createNewExperience(e) {
-        const experiences = [... this.state.experiences]
+        const experiences = [...this.state.experiences]
         const swiper = this.swiperRef.current.swiper;
         if (experiences.length < 4) {
             experiences.push({
@@ -87,7 +88,6 @@ class Experience extends React.Component {
                 company: '',
                 location: '',
                 years: 0,
-                location: '',
                 id: uniqid()
             })
             this.setState({
@@ -122,6 +122,19 @@ class Experience extends React.Component {
         return (
             <div className='experiences'>
                 <Swiper
+                    modules={[EffectFade]}
+                    effect={"fade"}
+
+                    creativeEffect={{
+                        prev: {
+                            shadow: true,
+                            translate: ["-20%", 0, -1],
+                        },
+                        next: {
+                            translate: ["100%", 0, 0],
+                        },
+                    }}
+
                     className='swiperExperiences'
                     ref={this.swiperRef}
                     allowTouchMove={false}

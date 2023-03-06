@@ -1,6 +1,6 @@
 :root {
     --background-color: #111111;
-    --swiper-theme-color: #cecac0;
+    --swiper-theme-color: #cecac0 !important;
     --color: #cecac0;
     --background-scrollbar-track: #cecac017;
     --main-color: #232323;
@@ -9,7 +9,7 @@
 
 .dayTheme {
     --background-color: #c7c7c7;
-    --swiper-theme-color: #4a4a4a;
+    --swiper-theme-color: #4a4a4a !important;
     --color: #4a4a4a;
     --background-scrollbar-track: #cecac017;
     --main-color: #f4f4f4;

@@ -9,8 +9,11 @@ import { FaGithubSquare, FaSun, FaMoon, FaEye, FaEyeSlash } from 'react-icons/fa
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import { IoNewspaper } from 'react-icons/io5';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+
 import { motion } from 'framer-motion'
 import 'swiper/css';
+
 
 class CVForm extends React.Component {
 
