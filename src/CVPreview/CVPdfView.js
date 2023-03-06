@@ -3,46 +3,22 @@ import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail, HiOutlineLink }
 import { GiPlainCircle } from "react-icons/gi";
 import './CVPreview.css'
 
-class CVPreview extends React.Component {
+class CVPdfView extends React.Component {
     constructor(props) {
         super(props)
-        this.handleResize = this.handleResize.bind(this)
-        this.containerRef = React.createRef();
-        this.observer = null;
-        this.state = {
-            height: 989.8,
-            scale: 1
-        }
+        this.screenshotRef = React.createRef()
+
     }
 
     componentDidMount() {
-        this.observer = new ResizeObserver(this.handleResize);
-        this.observer.observe(this.containerRef.current);
+        this.props.getRefToCvPreview(this.screenshotRef)
     }
-
-    componentWillUnmount() {
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-    }
-
-    handleResize(entries) {
-        const { width } = entries[0].contentRect;
-        const aspectRatioHeight = width * 1.414
-        const scale = width * 1 / 700
-        this.setState({
-            height: aspectRatioHeight,
-            scale
-        })
-    }
-
-
 
     render() {
-        const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills } = this.props
+        const { firstName, lastName, charge, profile, email, website, location, phoneNumber, education, experience, skills, getRefToCvPreview } = this.props
         return (
-            <section className='paperPreviewContainer' ref={this.containerRef} style={{ height: `${this.state.height}px`, minHeight: `${this.state.height}px` }}>
-                <div className='paperPreview' style={{ transform: `scale(${this.state.scale})` }}>
+            <section className='paperPreviewContainer CVPdfView' ref={this.screenshotRef}>
+                <div className='paperPreview'>
                     <div className='titleOfPaper'>
                         <h1 className='aspirantNamePaper'>{firstName} {lastName}</h1>
                         <h2 className='chargeNamePaper'>{charge}</h2>
@@ -138,4 +114,4 @@ class CVPreview extends React.Component {
     }
 }
 
-export default CVPreview;
+export default CVPdfView;

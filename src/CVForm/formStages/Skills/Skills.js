@@ -1,7 +1,12 @@
 import './Skills.css'
 import React from 'react'
 import uniqid from 'uniqid'
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import html2canvas from 'html2canvas';
 import { BsFillTrashFill } from "react-icons/bs";
+// import { documentToSVG, elementToSVG, inlineResources, formatXML } from 'dom-to-svg'
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class Skills extends React.Component {
 
@@ -11,6 +16,7 @@ class Skills extends React.Component {
         this.addSkill = this.addSkill.bind(this)
         this.deleteSkill = this.deleteSkill.bind(this)
         this.resetValues = this.resetValues.bind(this)
+        this.saveCV = this.saveCV.bind(this)
         this.skillInput = React.createRef()
         this.skill = {
             skillDescription: '',
@@ -19,6 +25,41 @@ class Skills extends React.Component {
         this.state = {
             skills: []
         };
+    }
+
+    saveCV(e) {
+        e.preventDefault()
+        const { refCVPreview } = this.props
+        // version of vector screenshot removed for visuals bugs in fonts 
+
+        // const svgRef = elementToSVG(refCVPreview)
+        // const svgString = new XMLSerializer().serializeToString(svgRef)
+        // const docDefinition = {
+        //     pageSize: 'A4',
+        //     pageMargins: [0, 0, 0, 0],
+        //     content: [
+        //         {
+        //             svg: svgString,
+        //             fit: ['auto']
+        //         }
+        //     ]
+        // };
+        // pdfMake.createPdf(docDefinition).download('Curriculum-Vitae')
+
+        html2canvas(refCVPreview).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+            const docDefinition = {
+                pageSize: 'A4',
+                pageMargins: [0, 0, 0, 0],
+                content: [
+                    {
+                        image: imgData,
+                        fit: [845, 845]
+                    }
+                ]
+            };
+            pdfMake.createPdf(docDefinition).download();
+        });
     }
 
     resetValues() {
@@ -73,6 +114,7 @@ class Skills extends React.Component {
                     Skill
                     <input type="text" ref={this.skillInput} maxLength='24' name="" id="skill" onChange={this.handleInput} />
                 </label>
+
                 <div className='listOfSkills'>
                     {
                         this.state.skills.map((skill) => {
@@ -86,7 +128,7 @@ class Skills extends React.Component {
                     }
                 </div>
                 <button className={`addSkillBtn ${this.state.skills.length < 9 ? '' : 'disable'}`} onClick={this.addSkill}>+</button>
-                <button className='saveBtn' onClick={this.addSkill}>Save CV</button>
+                <button className='saveBtn' onClick={this.saveCV}>Save CV</button>
                 <h2 className='formTitleStage'>Skills</h2>
             </div>
         )

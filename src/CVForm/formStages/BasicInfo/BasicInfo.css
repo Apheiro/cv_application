@@ -16,6 +16,6 @@
     background: var(--secundary-color);
     height: 150px;
     border: none;
-    color: #cecac0;
+    color: var(--color);
     padding: 10px;
 }

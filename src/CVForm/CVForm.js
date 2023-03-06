@@ -9,6 +9,7 @@ import { FaGithubSquare, FaSun, FaMoon, FaEye, FaEyeSlash } from 'react-icons/fa
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import { IoNewspaper } from 'react-icons/io5';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion'
 import 'swiper/css';
 
 class CVForm extends React.Component {
@@ -29,19 +30,58 @@ class CVForm extends React.Component {
     }
 
     render() {
-        const { getData, showPreviewFn, showPreview, showOnlyPreviewFn, width, dayTheme, dayThemeFn } = this.props;
-
+        const { getData, showPreviewFn, showPreview, showOnlyPreviewFn, width, dayTheme, dayThemeFn, refCVPreview } = this.props;
         return (
-            <section className='CVFormSection'>
+            <motion.section className='CVFormSection'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+            >
 
-                {width > 1370 ? <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button> : null}
+                {width > 1370 ? <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    className='prevNextBtn'
+                    id='prevFormBtn'
+                    onClick={this.swipeToNextPrev}>
+                    <GrFormPrevious />
+                </motion.button> : null}
 
                 <div className='CVFormGrid'>
                     <h1 className='titleForm'>CV APPLICATION</h1>
-                    <a className='githubBtn btnOptions' href="https://github.com/Apheiro"><FaGithubSquare /></a>
-                    <button className='darkModeBtn btnOptions' onClick={dayThemeFn}>{dayTheme ? <FaMoon /> : <FaSun />}</button>
-                    <button className='onlyPreviewBtn btnOptions' onClick={showOnlyPreviewFn}><IoNewspaper /></button>
-                    <button className={`previewBtn btnOptions ${width < 1000 ? 'disable' : ''}`} onClick={showPreviewFn}>{showPreview ? <FaEyeSlash /> : <FaEye />}</button>
+                    <motion.a
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        className='githubBtn btnOptions'
+                        href="https://github.com/Apheiro">
+                        <FaGithubSquare />
+                    </motion.a>
+
+                    <motion.button
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        className='darkModeBtn btnOptions'
+                        onClick={dayThemeFn}>
+                        {dayTheme ? <FaMoon /> : <FaSun />}
+                    </motion.button>
+
+                    <motion.button
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        className='onlyPreviewBtn btnOptions'
+                        onClick={showOnlyPreviewFn}>
+
+                        <IoNewspaper />
+                    </motion.button>
+
+                    <motion.button
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={`previewBtn btnOptions ${width < 1000 ? 'disable' : ''}`}
+                        onClick={showPreviewFn}>
+                        {showPreview ? <FaEyeSlash /> : <FaEye />}
+                    </motion.button>
+
                     <form className='CVForm'>
                         <Swiper
                             className='swiperPrincipal'
@@ -54,7 +94,7 @@ class CVForm extends React.Component {
                             <SwiperSlide className='swiper-slidePrincipal'> <Contact getData={getData} /> </SwiperSlide>
                             <SwiperSlide className='swiper-slidePrincipal'> <Education getData={getData} /> </SwiperSlide>
                             <SwiperSlide className='swiper-slidePrincipal'> <Experience getData={getData} /> </SwiperSlide>
-                            <SwiperSlide className='swiper-slidePrincipal'> <Skills getData={getData} /> </SwiperSlide>
+                            <SwiperSlide className='swiper-slidePrincipal'> <Skills refCVPreview={refCVPreview} getData={getData} /> </SwiperSlide>
                         </Swiper>
 
                     </form>
@@ -63,14 +103,35 @@ class CVForm extends React.Component {
                     </div>
                 </div>
                 {
-                    width > 1370 ? <button className='prevNextBtn' id='nextFormBtn' onClick={this.swipeToNextPrev}><GrFormNext /></button> :
+                    width > 1370 ? <motion.button
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        className='prevNextBtn'
+                        id='nextFormBtn'
+                        onClick={this.swipeToNextPrev}>
+                        <GrFormNext />
+                    </motion.button> :
                         <div className='prevNextBtnContainer'>
-                            <button className='prevNextBtn' id='prevFormBtn' onClick={this.swipeToNextPrev}><GrFormPrevious /></button>
-                            <button className='prevNextBtn' id='nextFormBtn' onClick={this.swipeToNextPrev}><GrFormNext /></button>
+                            <motion.button
+                                whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.9 }}
+                                className='prevNextBtn'
+                                id='prevFormBtn'
+                                onClick={this.swipeToNextPrev}>
+                                <GrFormPrevious />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.9 }}
+                                className='prevNextBtn'
+                                id='nextFormBtn'
+                                onClick={this.swipeToNextPrev}>
+                                <GrFormNext />
+                            </motion.button>
                         </div>
                 }
 
-            </section >
+            </motion.section >
         )
     }
 }

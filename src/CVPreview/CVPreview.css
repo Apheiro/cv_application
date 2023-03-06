@@ -8,6 +8,14 @@
     width: 100%;
 }
 
+.CVPdfView {
+    position: absolute !important;
+    min-width: 700px;
+    min-height: calc(700*1.414px);
+    transform: scale(3);
+    clip: rect(0 0 0 0);
+}
+
 .paperPreview {
     display: grid;
     grid-template-columns: 450px 180px;
@@ -16,6 +24,17 @@
     margin: 25px;
     gap: 20px;
     position: absolute;
+}
+
+.skillListElement {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.skillListElement svg {
+    height: 6px;
+    width: 6px;
 }
 
 .titleOfPaper {
