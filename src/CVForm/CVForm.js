@@ -9,6 +9,7 @@ import { FaGithubSquare, FaSun, FaMoon, FaEye, FaEyeSlash } from 'react-icons/fa
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 import { IoNewspaper } from 'react-icons/io5';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Keyboard } from "swiper";
 
 
 import { motion } from 'framer-motion'
@@ -87,6 +88,11 @@ class CVForm extends React.Component {
 
                     <form className='CVForm'>
                         <Swiper
+                            modules={[Keyboard]}
+
+                            keyboard={{
+                                enabled: true,
+                            }}
                             className='swiperPrincipal'
                             ref={this.swiperRef}
                             allowTouchMove={false}
