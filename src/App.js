@@ -131,8 +131,6 @@ class App extends React.Component {
     this.refToCvPreview = ref.current
     this.setState({
       refCVPreview: ref.current
-    }, () => {
-      console.log(this.state.refCVPreview)
     })
   }
 
@@ -233,7 +231,6 @@ class App extends React.Component {
           this.state.width < 1000 && this.state.showOnlyPreview === false ? null :
             this.state.showPreview ?
               <CVPreview
-                // getRefToCvPreview={this.getRefToCvPreview}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
                 charge={this.state.charge}
@@ -270,8 +267,6 @@ class App extends React.Component {
               <RiArrowGoBackLine />
             </button> : null
         }
-
-        {/* <button onClick={() => console.log(this.state)}>test</button> */}
       </div>
     )
   }
