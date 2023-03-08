@@ -33,6 +33,10 @@ body {
     background: var(--background-color);
 }
 
+.hidden {
+    display: none !important;
+}
+
 .disable {
     opacity: 0.5;
     pointer-events: none;
